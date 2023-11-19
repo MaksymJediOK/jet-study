@@ -1,0 +1,48 @@
+.form-container {
+  .text-container {
+    text-align: left;
+    padding: 16px 0;
+  }
+  &-title {
+    color: rgba(0, 0, 0, 0.87);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 133.4%;
+  }
+  &-subtext {
+    color: rgba(0, 0, 0, 0.6);
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%;
+    letter-spacing: 0.17px;
+  }
+  &-divider {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 12px;
+    line-height: 166%;
+    letter-spacing: 0.4px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  &-policy {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 12px;
+    line-height: 166%;
+    letter-spacing: 0.4px;
+    text-align: left;
+    margin-top: 16px;
+  }
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

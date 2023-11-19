@@ -1,0 +1,37 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: #405792;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 270px;
+}
+.sign-up-text {
+  color: #fff;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 700;
+}
+.form-container-main {
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  min-width: 560px;
+  min-height: 475px;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
