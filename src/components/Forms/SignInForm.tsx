@@ -5,13 +5,12 @@ import GoogleIcon from '@mui/icons-material/Google'
 import { useForm } from 'react-hook-form'
 import { RegistrationType } from '../../types/RegistrationType.ts'
 import { CustomInput } from '../CustomInput/CustomInput.tsx'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SignInForm = () => {
   const { control, handleSubmit } = useForm<RegistrationType>({
     defaultValues: { email: '', password: '' }
   })
-  const navigate = useNavigate()
   const SignIn = async (data: RegistrationType) => {
     console.log(data)
   }
