@@ -5,6 +5,8 @@ import { UserInterests } from '../components/Forms/UserInterests/UserInterests.t
 import { SignInForm } from '../components/Forms/SignInForm.tsx'
 import { Default } from '../layouts/Default.tsx'
 import { Home } from '../pages/Home.tsx'
+import { DetailsLayout } from '../layouts/DetailsLayout.tsx'
+import { DetailedEvent } from '../components/DetailedEvent/DetailedEvent.tsx'
 
 const ApplicationRoutes = () => {
   return (
@@ -17,6 +19,10 @@ const ApplicationRoutes = () => {
       <Route path='/' element={<Default />}>
         <Route path='/home' index element={<Home />} />
       </Route>
+      <Route path='home' element={<DetailsLayout />}>
+        <Route path='event/:id' index element={<DetailedEvent />} />
+      </Route>
+
     </Routes>
   )
 }

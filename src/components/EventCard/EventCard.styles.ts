@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Link } from 'react-router-dom'
 
 export const CardContainer = styled.div`
   width: 355px;
@@ -39,4 +40,9 @@ export const CardSubTitle = styled.div`
   font-weight: 400;
   line-height: 150%;
   letter-spacing: 0.15px;
+`
+export const LinkWrapper = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 `

@@ -26,9 +26,9 @@ const Footer = () => {
 
 export { Footer }
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   background: #212121;
-  padding: 100px 0 0 220px;
+  padding: 100px 0 90px 220px;
 `
 const Title = styled(Link)`
   text-decoration: none;
