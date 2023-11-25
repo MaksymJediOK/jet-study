@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import { useState } from 'react'
 import styled from '@emotion/styled'
-import { CategoriesGroup } from '../CategoriesGroup/CategoriesGroup.tsx'
 const SearchBlock = () => {
   const { control, handleSubmit } = useForm<{ search: string }>({
     defaultValues: { search: '' }
@@ -20,7 +19,7 @@ const SearchBlock = () => {
   return (
     <SearchContainer onSubmit={handleSubmit(handleSearch)}>
       <CustomInput name='search' type='text' label='Search' control={control} />
-      <Select value={date} onChange={handleChange} defaultValue='this month'>
+      <Select value={date} onChange={handleChange} defaultValue='this month' fullWidth>
         <MenuItem value={10}>This month</MenuItem>
         <MenuItem value={20}>This year</MenuItem>
         <MenuItem value={30}>This day</MenuItem>
@@ -28,8 +27,6 @@ const SearchBlock = () => {
       <Button type='submit' variant='contained' size='large'>
         search
       </Button>
-      <CategoriesGroup />
-      <CategoriesGroup />
     </SearchContainer>
   )
 }

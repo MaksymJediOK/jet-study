@@ -1,19 +1,13 @@
 import styled from '@emotion/styled'
 import { SearchBlock } from './SearchBlock/SearchBlock.tsx'
-import { EventCard } from '../EventCard/EventCard.tsx'
+import { CategoriesGroup } from './CategoriesGroup/CategoriesGroup.tsx'
+
 const FilterColumn = () => {
   return (
     <FilterContainer>
       <SearchBlock />
-
-      <GridContainer>
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-      </GridContainer>
+      <CategoriesGroup />
+      <CategoriesGroup />
     </FilterContainer>
   )
 }
@@ -21,12 +15,8 @@ const FilterColumn = () => {
 export { FilterColumn }
 
 const FilterContainer = styled.div`
+  width: 345px;
   display: flex;
-  gap: 24px;
-`
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(0, 272px); 
-  gap: 24px;
+  flex-direction: column;
+  gap: 16px;
 `
