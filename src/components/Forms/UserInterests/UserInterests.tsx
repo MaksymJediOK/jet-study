@@ -1,4 +1,4 @@
-import '../SignForm.styles.scss'
+import '../SignForm/SignForm.styles.scss'
 import { ChangeEvent, useState } from 'react'
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup } from '@mui/material'
 

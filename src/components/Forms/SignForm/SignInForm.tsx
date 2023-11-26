@@ -3,8 +3,8 @@ import { Box, Button, Stack } from '@mui/material'
 import MaterialLink from '@mui/material/Link'
 import GoogleIcon from '@mui/icons-material/Google'
 import { useForm } from 'react-hook-form'
-import { RegistrationType } from '../../types/RegistrationType.ts'
-import { CustomInput } from '../CustomInput/CustomInput.tsx'
+import { RegistrationType } from 'types/RegistrationType.ts'
+import { CustomInput } from 'components/CustomInput/CustomInput.tsx'
 import { Link } from 'react-router-dom'
 
 const SignInForm = () => {

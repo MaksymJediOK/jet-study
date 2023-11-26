@@ -1,11 +1,13 @@
 import { AppBar, Box, Toolbar, Button } from '@mui/material'
 import styled from '@emotion/styled'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' color='secondary'>
-        <Toolbar sx={{justifyContent: 'space-between'}}>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <HeaderText>Jet Study</HeaderText>
           <NavigationText>
             <HeaderText>Events</HeaderText>
@@ -15,8 +17,12 @@ const Header = () => {
 
           <HeaderWrapper>
             <Button variant='text'>BECOME INSTRUCTOR</Button>
-            <Button variant='outlined'>log in</Button>
-            <Button variant='contained'>sign in</Button>
+            <Button variant='outlined' onClick={() => navigate('/auth/login')}>
+              log in
+            </Button>
+            <Button variant='contained' onClick={() => navigate('/auth/register')}>
+              sign in
+            </Button>
           </HeaderWrapper>
         </Toolbar>
       </AppBar>

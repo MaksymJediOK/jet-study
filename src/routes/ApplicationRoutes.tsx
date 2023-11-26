@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import { AuthLayout } from '../layouts/Auth.layout'
-import { SignUpForm } from '../components/Forms/SignUpForm'
+import { AuthLayout } from '../layouts/Auth'
 import { UserInterests } from '../components/Forms/UserInterests/UserInterests.tsx'
-import { SignInForm } from '../components/Forms/SignInForm.tsx'
+import { SignInForm, SignUpForm } from 'components/Forms/SignForm'
 import { Default } from '../layouts/Default.tsx'
 import { Home } from '../pages/Home.tsx'
 import { DetailsLayout } from '../layouts/DetailsLayout.tsx'
@@ -22,7 +21,6 @@ const ApplicationRoutes = () => {
       <Route path='home' element={<DetailsLayout />}>
         <Route path='event/:id' index element={<DetailedEvent />} />
       </Route>
-
     </Routes>
   )
 }
