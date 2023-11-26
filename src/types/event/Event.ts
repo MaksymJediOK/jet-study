@@ -26,8 +26,8 @@ interface DetailedEvent extends IEvent {
   location: string
   additionalResources: string
   isOnline: boolean
-  waitingForConfirmation: boolean
-  isAllowedToWatchAllContent: boolean
+  waitingForConfirmation: boolean | null
+  isAllowedToWatchAllContent: boolean | null
 }
 
 export type { Creator, IEvent, DetailedEvent }
