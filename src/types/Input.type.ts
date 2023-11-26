@@ -5,4 +5,5 @@ export interface CustomInputProps<T extends FieldValues> {
   type: 'text' | 'email' | 'number' | 'password'
   label: string
   control: Control<T>
+  error?: string
 }

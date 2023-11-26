@@ -1,12 +1,13 @@
 import { TextField } from '@mui/material'
 import { Controller, FieldValues } from 'react-hook-form'
-import { CustomInputProps } from '../../types/Input.type'
+import { CustomInputProps } from 'types/Input.type.ts'
 
 const CustomInput = <T extends FieldValues>({
   name,
   label,
   type,
-  control
+  control,
+  error
 }: CustomInputProps<T>) => {
   return (
     <div>
@@ -14,7 +15,15 @@ const CustomInput = <T extends FieldValues>({
         name={name}
         control={control}
         render={({ field }) => (
-          <TextField type={type} label={label} variant='outlined' {...field} fullWidth />
+          <TextField
+            type={type}
+            label={label}
+            variant='outlined'
+            {...field}
+            fullWidth
+            error={!!error}
+            helperText={error || ''}
+          />
         )}
       />
     </div>

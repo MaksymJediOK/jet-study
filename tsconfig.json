@@ -21,6 +21,16 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "UI/*": ["UI/*"],
+      "types/*": ["types/*"],
+      "features/*": ["features/*"],
+      "hooks/*": ["hooks/*"],
+      "services/*": ["services/*"],
+      "store/*": ["store/*"],
+      "utils/*": ["utils/*"],
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
