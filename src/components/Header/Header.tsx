@@ -1,6 +1,6 @@
 import { AppBar, Box, Toolbar, Button } from '@mui/material'
 import styled from '@emotion/styled'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -8,13 +8,12 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' color='secondary'>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <HeaderText>Jet Study</HeaderText>
+          <HeaderText to='/home'>Jet Study</HeaderText>
           <NavigationText>
-            <HeaderText>Events</HeaderText>
-            <HeaderText>Calendar</HeaderText>
-            <HeaderText>FAQ</HeaderText>
+            <HeaderText to='/home'>Events</HeaderText>
+            <HeaderText to='/home'>Calendar</HeaderText>
+            <HeaderText to='/home'>FAQ</HeaderText>
           </NavigationText>
-
           <HeaderWrapper>
             <Button variant='text'>BECOME INSTRUCTOR</Button>
             <Button variant='outlined' onClick={() => navigate('/auth/login')}>
@@ -30,7 +29,8 @@ const Header = () => {
   )
 }
 
-const HeaderText = styled.div`
+const HeaderText = styled(Link)`
+  text-decoration: none;
   color: #000;
   font-family:
     Roboto Flex,

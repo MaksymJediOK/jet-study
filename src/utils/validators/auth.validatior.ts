@@ -8,3 +8,8 @@ export const registrationSchema = object().shape({
     .required('Password is required'),
   email: string().required('email is required').email('invalid email')
 })
+
+export const loginSchema =object().shape({
+  username: string().required('Name is required'),
+  password: string().required('Password is required'),
+})

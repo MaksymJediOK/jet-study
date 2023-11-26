@@ -7,15 +7,19 @@ import {
   LinkWrapper
 } from './EventCard.styles.ts'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import { IEvent } from 'types/event'
+import { formatDate } from 'utils/formatDate.ts'
 
-const SimpleEventCard = () => {
+const SimpleEventCard = ({ id, title, creator: { fullName }, startTime, startDate }: IEvent) => {
   return (
-    <LinkWrapper to='event/1' relative='path'>
+    <LinkWrapper to={`event/${id}`} relative='path'>
       <SimpleCardContainer>
         <CardContent>
           <div>
-            <CardTitle>Walkthrough of .NET 8.0 features</CardTitle>
-            <CardSubTitle>Yurii Kleban • 4 Feb 2023 • 19:00</CardSubTitle>
+            <CardTitle>{title}</CardTitle>
+            <CardSubTitle>
+              {fullName} • {formatDate(startDate)} • {startTime.slice(0, -3)}
+            </CardSubTitle>
           </div>
           <IconButton>
             <FavoriteIcon />

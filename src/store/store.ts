@@ -1,16 +1,19 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { registerReducer } from './reducers/register.slice'
 import { authApi } from 'services/auth.api.ts'
+import { eventApi } from 'services/event.api.ts'
 
 const rootReducer = combineReducers({
   register: registerReducer,
-  [authApi.reducerPath]: authApi.reducer
+  [authApi.reducerPath]: authApi.reducer,
+  [eventApi.reducerPath]: eventApi.reducer
 })
 
 export const store = configureStore({
   reducer: rootReducer,
   devTools: true,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(authApi.middleware, eventApi.middleware)
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -12,6 +12,7 @@ import {
 
 const DetailedEvent = () => {
   const { id } = useParams()
+
   console.log(id)
   return (
     <>

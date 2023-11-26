@@ -24,11 +24,12 @@ const SignUpForm = () => {
   const navigate = useNavigate()
   const SignUp = async (registrationData: RegistrationType) => {
     try {
-      await register(registrationData).unwrap()
+      await register(registrationData)
+        .unwrap()
+        .catch((e) => console.log(e))
+        .finally(() => navigate('interests'))
     } catch (e) {
       console.log(e)
-    } finally {
-      navigate('interests')
     }
   }
 

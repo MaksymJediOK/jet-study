@@ -5,10 +5,13 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import { IconButton, Stack } from '@mui/material'
 import { useState } from 'react'
 import { SimpleEventCard } from '../EventCard/SimpleEventCard.tsx'
+import { useGetAllEventsQuery } from 'services/event.api.ts'
+import { EventSkeleton } from 'components/Preloaders/EventSkeleton/EventSkeleton.tsx'
+import { IEvent } from 'types/event'
 
 const EventsGrid = () => {
+  const { data, isLoading } = useGetAllEventsQuery()
   const [isGrid, setGrid] = useState(true)
-  const items = [1, 2, 3, 4, 5, 6]
   const layoutClass = isGrid ? 'grid-container' : 'flex-container'
   return (
     <Stack gap={3} minWidth='1115px'>
@@ -26,8 +29,16 @@ const EventsGrid = () => {
 
       <div>
         <div className={layoutClass}>
-          {items.map((_, index) =>
-            isGrid ? <EventCard key={index} /> : <SimpleEventCard key={index} />
+          {isLoading ? (
+            <EventSkeleton />
+          ) : (
+            data?.map((event: IEvent) =>
+              isGrid ? (
+                <EventCard key={event.id} {...event} />
+              ) : (
+                <SimpleEventCard key={event.id} {...event} />
+              )
+            )
           )}
         </div>
       </div>

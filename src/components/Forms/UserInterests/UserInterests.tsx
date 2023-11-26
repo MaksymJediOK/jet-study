@@ -1,8 +1,10 @@
 import '../SignForm/SignForm.styles.scss'
 import { ChangeEvent, useState } from 'react'
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const UserInterests = () => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     frontend: true,
     backend: false,
@@ -49,10 +51,15 @@ const UserInterests = () => {
             control={<Checkbox checked={ml} onChange={handleChange} name='ml' />}
             label='Machine Learning'
           />
-          <Button variant='contained' sx={{ margin: '16px 0' }} fullWidth>
+          <Button
+            variant='contained'
+            sx={{ margin: '16px 0' }}
+            fullWidth
+            onClick={() => navigate('/home')}
+          >
             Explore events
           </Button>
-          <Button variant='outlined' fullWidth>
+          <Button variant='outlined' fullWidth onClick={() => navigate('/home')}>
             skip this step
           </Button>
         </FormGroup>
