@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { loginSchema } from 'utils/validators'
 import { LoginType } from 'types/auth'
 import { useLoginMutation } from 'services/auth.api.ts'
+import { tokenKey } from 'utils/constants'
 
 const SignInForm = () => {
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ const SignInForm = () => {
   const SignIn = async (loginData: LoginType) => {
     await login(loginData)
       .unwrap()
-      .then(({ access_token }) => localStorage.setItem('token', access_token))
+      .then(({ access_token }) => localStorage.setItem(tokenKey, access_token))
     navigate('/home')
   }
 

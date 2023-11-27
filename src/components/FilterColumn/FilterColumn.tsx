@@ -1,13 +1,14 @@
 import styled from '@emotion/styled'
 import { SearchBlock } from './SearchBlock/SearchBlock.tsx'
 import { CategoriesGroup } from './CategoriesGroup/CategoriesGroup.tsx'
+import { ControlledRadioButtonsGroup } from 'components/FilterColumn/FormatGroup/FormatGroup.tsx'
 
 const FilterColumn = () => {
   return (
     <FilterContainer>
       <SearchBlock />
       <CategoriesGroup />
-      <CategoriesGroup />
+      <ControlledRadioButtonsGroup />
     </FilterContainer>
   )
 }

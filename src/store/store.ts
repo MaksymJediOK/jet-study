@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { registerReducer } from './reducers/register.slice'
 import { authApi } from 'services/auth.api.ts'
 import { eventApi } from 'services/event.api.ts'
+import { filterReducer } from 'store/reducers/filter.slice.ts'
 
 const rootReducer = combineReducers({
-  register: registerReducer,
   [authApi.reducerPath]: authApi.reducer,
-  [eventApi.reducerPath]: eventApi.reducer
+  [eventApi.reducerPath]: eventApi.reducer,
+  filter: filterReducer
 })
 
 export const store = configureStore({

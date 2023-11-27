@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 interface RegisterState {
   email: string
@@ -11,12 +11,12 @@ const initialState: RegisterState = {
   password: ''
 }
 
+
 const registerSlice = createSlice({
   name: 'reg',
   initialState,
   reducers: {
-    setData(state, action: PayloadAction<RegisterState>) {
-      state = action.payload
+    setData() {
     }
   }
 })

@@ -1,8 +1,11 @@
 import { AppBar, Box, Toolbar, Button } from '@mui/material'
 import styled from '@emotion/styled'
 import { Link, useNavigate } from 'react-router-dom'
+import { tokenKey } from 'utils/constants'
+import { AuthPanel } from 'components/Header/AuthPanel/AuthPanel.tsx'
 
 const Header = () => {
+  const token = localStorage.getItem(tokenKey)
   const navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -16,12 +19,18 @@ const Header = () => {
           </NavigationText>
           <HeaderWrapper>
             <Button variant='text'>BECOME INSTRUCTOR</Button>
-            <Button variant='outlined' onClick={() => navigate('/auth/login')}>
-              log in
-            </Button>
-            <Button variant='contained' onClick={() => navigate('/auth/register')}>
-              sign in
-            </Button>
+            {token ? (
+              <AuthPanel />
+            ) : (
+              <>
+                <Button variant='outlined' onClick={() => navigate('/auth/login')}>
+                  log in
+                </Button>
+                <Button variant='contained' onClick={() => navigate('/auth/register')}>
+                  sign in
+                </Button>
+              </>
+            )}
           </HeaderWrapper>
         </Toolbar>
       </AppBar>
