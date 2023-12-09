@@ -5,18 +5,25 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import { IconButton, Stack } from '@mui/material'
 import { useState } from 'react'
 import { SimpleEventCard } from '../EventCard/SimpleEventCard.tsx'
-import { useGetAllEventsQuery } from 'services/event.api.ts'
+import { useGetFilteredEventsQuery } from 'services/filter.api.ts'
 import { EventSkeleton } from 'components/Preloaders/EventSkeleton/EventSkeleton.tsx'
-import { IEvent } from 'types/event'
+import { ShortEvent } from 'types/event'
+import { useAppSelector } from 'hooks/redux.ts'
+import { createQueryString } from 'utils/queryBuilder.ts'
 
 const EventsGrid = () => {
-  const { data, isLoading } = useGetAllEventsQuery()
+  const { search, dateFilter, eventTypeId, categoryId } = useAppSelector((state) => state.filter)
+  const query = createQueryString(search, dateFilter, categoryId, eventTypeId)
+  const { data, isLoading } = useGetFilteredEventsQuery(query, {
+    refetchOnMountOrArgChange: true
+  })
+
   const [isGrid, setGrid] = useState(true)
   const layoutClass = isGrid ? 'grid-container' : 'flex-container'
   return (
     <Stack gap={3} minWidth='1115px'>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <EventText>Found 45 events</EventText>
+        <EventText>Found {data?.length} events</EventText>
         <Stack direction='row' gap={2}>
           <IconButton onClick={() => setGrid(true)}>
             <DashboardIcon />
@@ -26,21 +33,24 @@ const EventsGrid = () => {
           </IconButton>
         </Stack>
       </Stack>
-
       <div>
-        <div className={layoutClass}>
-          {isLoading ? (
-            <EventSkeleton />
-          ) : (
-            data?.map((event: IEvent) =>
-              isGrid ? (
-                <EventCard key={event.id} {...event} />
-              ) : (
-                <SimpleEventCard key={event.id} {...event} />
+        {!data?.length ? (
+          <p>No events were found.</p>
+        ) : (
+          <div className={layoutClass}>
+            {isLoading ? (
+              <EventSkeleton />
+            ) : (
+              data?.map((event: ShortEvent) =>
+                isGrid ? (
+                  <EventCard key={event.id} {...event} />
+                ) : (
+                  <SimpleEventCard key={event.id} {...event} />
+                )
               )
-            )
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </div>
     </Stack>
   )

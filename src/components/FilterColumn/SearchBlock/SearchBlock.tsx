@@ -1,28 +1,28 @@
 import { CustomInput } from '../../CustomInput/CustomInput.tsx'
 import { useForm } from 'react-hook-form'
 import { Button, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import { useState } from 'react'
 import styled from '@emotion/styled'
+import { useAppDispatch } from 'hooks/redux.ts'
+import { setDateFilter, setSearch } from 'store/reducers/filter.slice.ts'
 const SearchBlock = () => {
   const { control, handleSubmit } = useForm<{ search: string }>({
     defaultValues: { search: '' }
   })
-  const handleSearch = (data: { search: string }) => {
-    console.log(data)
-    console.log(date)
+  const dispatch = useAppDispatch()
+  const SearchEvents = (data: { search: string }) => {
+    dispatch(setSearch(data.search))
   }
-  const [date, setDate] = useState('')
+  const handleDateChange = (event: SelectChangeEvent) => {
+    dispatch(setDateFilter(event.target.value))
+  }
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setDate(event.target.value as string)
-  }
   return (
-    <SearchContainer onSubmit={handleSubmit(handleSearch)}>
+    <SearchContainer onSubmit={handleSubmit(SearchEvents)}>
       <CustomInput name='search' type='text' label='Search' control={control} />
-      <Select value={date} onChange={handleChange} defaultValue='this month' fullWidth>
-        <MenuItem value={10}>This month</MenuItem>
-        <MenuItem value={20}>This year</MenuItem>
-        <MenuItem value={30}>This day</MenuItem>
+      <Select onChange={handleDateChange} defaultValue='Year' fullWidth>
+        <MenuItem value='Months'>This month</MenuItem>
+        <MenuItem value='Year'>This year</MenuItem>
+        <MenuItem value='Week'>This day</MenuItem>
       </Select>
       <Button type='submit' variant='contained' size='large'>
         search

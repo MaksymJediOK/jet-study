@@ -15,6 +15,7 @@ const UserInterests = () => {
       ...state,
       [event.target.name]: event.target.checked
     })
+
   }
   const { frontend, backend, ml } = state
   return (
@@ -41,15 +42,15 @@ const UserInterests = () => {
           />
           <FormControlLabel
             control={<Checkbox checked={ml} onChange={handleChange} name='ml' />}
-            label='Machine Learning'
+            label='Marketing'
           />
           <FormControlLabel
             control={<Checkbox checked={ml} onChange={handleChange} name='ml' />}
-            label='Machine Learning'
+            label='Art'
           />
           <FormControlLabel
             control={<Checkbox checked={ml} onChange={handleChange} name='ml' />}
-            label='Machine Learning'
+            label='Finances'
           />
           <Button
             variant='contained'

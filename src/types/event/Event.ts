@@ -30,4 +30,8 @@ interface DetailedEvent extends IEvent {
   isAllowedToWatchAllContent: boolean | null
 }
 
-export type { Creator, IEvent, DetailedEvent }
+interface ShortEvent extends IEvent {
+  eventTypeId: number
+  categoryId: number
+}
+export type { Creator, IEvent, DetailedEvent, ShortEvent }

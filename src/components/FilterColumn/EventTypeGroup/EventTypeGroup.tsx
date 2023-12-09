@@ -1,28 +1,27 @@
+import { ChangeEvent } from 'react'
 import {
   FormControl,
+  RadioGroup,
   FormControlLabel,
   FormLabel,
   Radio,
-  RadioGroup,
   Skeleton
 } from '@mui/material'
-import { ChangeEvent } from 'react'
-import { useGetCategoriesQuery } from 'services/filter.api.ts'
+import { useGetEventTypesQuery } from 'services/filter.api.ts'
 import { useAppDispatch } from 'hooks/redux.ts'
-import { setCategoryId } from 'store/reducers/filter.slice.ts'
+import { setEventTypeId } from 'store/reducers/filter.slice.ts'
 
-const CategoriesGroup = () => {
-  const { data, isLoading } = useGetCategoriesQuery()
-
+const EventTypeGroup = () => {
+  const { data, isLoading } = useGetEventTypesQuery()
   const dispatch = useAppDispatch()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setCategoryId(Number(event.target.value)))
+    dispatch(setEventTypeId(Number(event.target.value)))
   }
 
   return (
     <FormControl>
-      <FormLabel id='categories'>Categories</FormLabel>
-      <RadioGroup aria-labelledby='categories' name='categories' onChange={handleChange}>
+      <FormLabel id='eventType'>Format</FormLabel>
+      <RadioGroup aria-labelledby='eventType' name='eventType' onChange={handleChange}>
         {isLoading ? (
           <Skeleton variant='rounded' width={210} height={60} />
         ) : (
@@ -35,4 +34,4 @@ const CategoriesGroup = () => {
   )
 }
 
-export { CategoriesGroup }
+export { EventTypeGroup }
