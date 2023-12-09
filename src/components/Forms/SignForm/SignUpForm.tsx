@@ -63,7 +63,7 @@ const SignUpForm = () => {
             />
             <CustomInput
               name='password'
-              type='text'
+              type='password'
               label='Password'
               control={control}
               error={errors.password?.message}
