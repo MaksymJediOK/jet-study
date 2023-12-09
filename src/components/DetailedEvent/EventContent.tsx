@@ -14,7 +14,6 @@ interface EventContentProps {
 }
 
 const EventContent = ({ about, program, lecturers, info }: EventContentProps) => {
-  console.log(lecturers)
   return (
     <>
       <Container maxWidth='xl' sx={{ mt: '48px', mb: '40px' }}>
@@ -27,7 +26,7 @@ const EventContent = ({ about, program, lecturers, info }: EventContentProps) =>
               <ListItemButton>Instructor</ListItemButton>
             </ScrollLink>
             <ScrollLink to='Program' smooth={true}>
-              <ListItemButton>Program</ListItemButton>
+              <ListItemButton>Target</ListItemButton>
             </ScrollLink>
             <ScrollLink to='Application' smooth={true}>
               <ListItemButton>Application</ListItemButton>
@@ -62,7 +61,7 @@ const EventContent = ({ about, program, lecturers, info }: EventContentProps) =>
               </Stack>
             </Stack>
             <Stack gap={3}>
-              <Heading name='Program'>Program</Heading>
+              <Heading name='Program'>Target audience</Heading>
               <TextContent>{program}</TextContent>
             </Stack>
             <Stack gap={3}>
